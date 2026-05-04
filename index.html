@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홍길동 - 시니어 백엔드 엔지니어 및 시스템 아키텍트</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            black: '#1a1a1a',
+                            gray: '#f5f5f5',
+                            accent: '#6366f1'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- 헤더 섹션 -->
+    <header class="fixed top-0 left-0 right-0 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm z-50 transition-colors duration-300">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#home" class="text-xl font-semibold tracking-tight">
+                    홍길동
+                </a>
+
+                <!-- 데스크톱 네비게이션 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#work" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Work</a>
+                    <a href="#about" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">About</a>
+                    <a href="#contact" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Contact</a>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- 모바일 햄버거 메뉴 버튼 -->
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- 모바일 메뉴 -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#work" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Work</a>
+                    <a href="#about" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">About</a>
+                    <a href="#contact" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Contact</a>
+                    <button id="mobile-theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors w-fit">
+                        <svg id="mobile-sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg id="mobile-moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 히어로 섹션 -->
+        <section id="home" class="min-h-screen flex items-center justify-center pt-20">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-8">
+                        <div class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center">
+                            <span class="text-4xl md:text-5xl font-bold text-white">HD</span>
+                        </div>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 text-center animate-fade-in">
+                        홍길동
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-2 text-center animate-fade-in-delay-1">
+                        Gil-dong Hong
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-500 dark:text-gray-500 mb-8 text-center animate-fade-in-delay-2">
+                        SENIOR BACKEND ENGINEER & SYSTEM ARCHITECT • AVAILABLE FOR REMOTE ROLES
+                    </p>
+                    <p class="text-base md:text-lg text-gray-600 dark:text-gray-400 mb-12 text-center max-w-2xl mx-auto animate-fade-in-delay-3">
+                        10년 차 이상의 개발 경력을 가진 엔지니어로, 대규모 엔터프라이즈 시스템의 현대화와 클라우드 네이티브 전환을 주도하고 있습니다.
+                    </p>
+                    <div class="flex justify-center space-x-4 animate-fade-in-delay-4">
+                        <a href="#work" class="px-8 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
+                            See the Work
+                        </a>
+                        <a href="#contact" class="px-8 py-3 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-full font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 이전 경험 섹션 -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-500 mb-8 text-center tracking-wider uppercase">
+                    Previous Experience
+                </h2>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm flex items-center justify-center">
+                            <span class="text-2xl font-bold text-indigo-600">🏭</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Samsung Electronics</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm flex items-center justify-center">
+                            <span class="text-2xl font-bold text-purple-600">☁️</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Naver Cloud</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm flex items-center justify-center">
+                            <span class="text-2xl font-bold text-pink-600">🚀</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Kakao Enterprise</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 선택된 작품 섹션 -->
+        <section id="work" class="py-20 bg-white dark:bg-gray-950 transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
+                    Selected Work
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-12 text-center max-w-2xl mx-auto">
+                    주요 프로젝트와 성과를 소개합니다.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- 프로젝트 1: EUREKA -->
+                    <div class="group">
+                        <div class="aspect-[4/3] bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-lg mb-4 overflow-hidden">
+                            <div class="w-full h-full flex items-center justify-center">
+                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            EUREKA
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                            지능형 설비 관리 시스템
+                        </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-500 mb-4">
+                            공장 내 노후 설비의 상태를 실시간으로 모니터링하고, AI 에이전트를 통해 고장 징후를 사전 예측하는 통합 관제 플랫폼입니다.
+                        </p>
+                        <a href="https://github.com/sample/eureka-platform" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">
+                            View Case Study
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- 프로젝트 2: 플레이스홀더 -->
+                    <div class="group opacity-60">
+                        <div class="aspect-[4/3] bg-gradient-to-br from-blue-400 via-indigo-400 to-purple-400 rounded-lg mb-4 overflow-hidden">
+                            <div class="w-full h-full flex items-center justify-center">
+                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            Coming Soon
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                            새로운 프로젝트
+                        </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-500 mb-4">
+                            새로운 프로젝트를 준비 중입니다. 곧 업데이트될 예정입니다.
+                        </p>
+                        <span class="inline-flex items-center text-sm font-medium text-gray-400">
+                            Coming Soon
+                        </span>
+                    </div>
+
+                    <!-- 프로젝트 3: 플레이스홀더 -->
+                    <div class="group opacity-60">
+                        <div class="aspect-[4/3] bg-gradient-to-br from-purple-400 via-pink-400 to-red-400 rounded-lg mb-4 overflow-hidden">
+                            <div class="w-full h-full flex items-center justify-center">
+                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            Coming Soon
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                            새로운 프로젝트
+                        </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-500 mb-4">
+                            새로운 프로젝트를 준비 중입니다. 곧 업데이트될 예정입니다.
+                        </p>
+                        <span class="inline-flex items-center text-sm font-medium text-gray-400">
+                            Coming Soon
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 소개 섹션 -->
+        <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8">
+                        About
+                    </h2>
+                    <div class="mb-12">
+                        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                            안녕하세요! 저는 홍길동입니다. 10년 이상의 개발 경력을 바탕으로 대규모 엔터프라이즈 시스템의 현대화와 클라우드 네이티브 전환을 전문으로 합니다. 특히 최신 AI 기술을 비즈니스 로직에 통합하여 운영 효율성을 극대화하는 솔루션 설계에 강점이 있습니다.
+                        </p>
+                        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                            Spring Boot와 Kubernetes를 활용한 마이크로서비스 아키텍처 설계, AI 기반 예지 보전 시스템 개발 등 다양한 프로젝트를 리드해 왔습니다. 항상 최신 기술을 학습하고 실무에 적용하여 비즈니스 가치를 창출하는 것을 목표로 합니다.
+                        </p>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-6">
+                        How I Work
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-indigo-600 dark:text-indigo-400 font-semibold">1</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Product-first Approach</h4>
+                                <p class="text-gray-600 dark:text-gray-400">비즈니스 목표와 사용자 요구사항을 먼저 이해하고, 기술적 해결책을 제시합니다.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-purple-600 dark:text-purple-400 font-semibold">2</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Systems Thinking</h4>
+                                <p class="text-gray-600 dark:text-gray-400">전체 시스템의 아키텍처와 상호작용을 고려하여 확장 가능하고 유지보수가 용이한 솔루션을 설계합니다.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 rounded-full bg-pink-100 dark:bg-pink-900 flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-pink-600 dark:text-pink-400 font-semibold">3</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Collaborative Leadership</h4>
+                                <p class="text-gray-600 dark:text-gray-400">팀원들과 적극적으로 소통하며, 집단 지성을 활용해 최고의 결과를 도출합니다.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-green-600 dark:text-green-400 font-semibold">4</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Mission-driven Development</h4>
+                                <p class="text-gray-600 dark:text-gray-400">기술의 힘으로 실제 비즈니스 문제를 해결하고 가치를 창출하는 것에 집중합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 기술 스택 섹션 -->
+        <section class="py-20 bg-white dark:bg-gray-950 transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                    Skills & Technologies
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                    <div class="text-center p-4">
+                        <div class="text-3xl mb-2">☕</div>
+                        <p class="font-medium">Java 21</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl mb-2">🐍</div>
+                        <p class="font-medium">Python</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl mb-2">📘</div>
+                        <p class="font-medium">TypeScript</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl mb-2">🌱</div>
+                        <p class="font-medium">Spring Boot</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl mb-2">🤖</div>
+                        <p class="font-medium">Spring AI</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl mb-2">⚛️</div>
+                        <p class="font-medium">Next.js</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl mb-2">☸️</div>
+                        <p class="font-medium">Kubernetes</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl mb-2">🐳</div>
+                        <p class="font-medium">Docker</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl mb-2">☁️</div>
+                        <p class="font-medium">AWS</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl mb-2">🐘</div>
+                        <p class="font-medium">PostgreSQL</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl mb-2">🦙</div>
+                        <p class="font-medium">Ollama</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl mb-2">🔗</div>
+                        <p class="font-medium">LangChain</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 연락처 섹션 -->
+        <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                        Let's Work Together
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-12">
+                        새로운 프로젝트나 협업 기회에 대해 이야기하고 싶으신가요? 언제든지 연락주세요.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                        <a href="mailto:gildong.hong@example.com" class="inline-flex items-center justify-center px-8 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            gildong.hong@example.com
+                        </a>
+                    </div>
+                    <div class="flex justify-center gap-6">
+                        <a href="https://github.com/gildonghong-dev" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com/in/gildonghong" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 py-8 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="font-semibold text-lg mb-1">홍길동</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Senior Backend Engineer & System Architect</p>
+                    <p class="text-sm text-green-600 dark:text-green-400 mt-1">Available for remote roles</p>
+                </div>
+                <div class="text-sm text-gray-500 dark:text-gray-500">
+                    © 2024 홍길동. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

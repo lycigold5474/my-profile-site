@@ -40,6 +40,10 @@ lib-cov
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+# Claude
+.claude/
+!.claude/settings.json
+.claude/settings.local.json
 *.suo
 *.ntvs*
 *.njsproj
